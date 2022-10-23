@@ -14,8 +14,7 @@ class App extends React.Component {
     );
   }
 
-  // react say .. we need to direct render
-  render() {
+  renderContent() {
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>;
     }
@@ -23,7 +22,12 @@ class App extends React.Component {
     if (!this.state.errorMessage && this.state.lat) {
       return <SeasonDisplay lat={this.state.lav} />;
     }
-    return <Spinner />;
+    return <Spinner message="Please accept location request" />;
+  }
+
+  // react say .. we need to direct render
+  render() {
+    return <div className="border red">{this.renderContent()}</div>;
   }
 }
 
